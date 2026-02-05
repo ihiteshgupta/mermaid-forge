@@ -2,6 +2,7 @@
   "name": "mermaid-forge",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@forge/bridge": "^5.12.0",
     "@testing-library/dom": "^10.4.1",

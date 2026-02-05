@@ -2,6 +2,7 @@
   "name": "config",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@codemirror/commands": "^6.10.1",
     "@codemirror/lang-markdown": "^6.5.0",

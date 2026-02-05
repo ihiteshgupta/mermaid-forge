@@ -10,9 +10,12 @@ const DEFAULT_DIAGRAM = `graph TD
     C --> E[End]
     D --> E`;
 
+type MermaidTheme = 'default' | 'dark' | 'forest' | 'neutral';
+
 interface MacroConfig {
   sourceMode?: 'inline' | 'url';
   mermaidCode?: string;
+  mermaidTheme?: MermaidTheme;
   externalUrl?: string;
   refreshInterval?: string;
 }
@@ -27,15 +30,20 @@ interface FetchResult {
 
 function App() {
   const [code, setCode] = useState('');
+  const [configTheme, setConfigTheme] = useState<MermaidTheme | undefined>();
   const [warning, setWarning] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const theme = useThemeDetect();
+  const systemTheme = useThemeDetect();
 
   useEffect(() => {
     const loadContent = async () => {
       try {
         const context = await view.getContext();
         const config = (context.extension?.config || {}) as MacroConfig;
+
+        if (config.mermaidTheme && config.mermaidTheme !== 'default') {
+          setConfigTheme(config.mermaidTheme);
+        }
 
         if (!config.sourceMode || config.sourceMode === 'inline') {
           setCode(config.mermaidCode || DEFAULT_DIAGRAM);
@@ -76,7 +84,7 @@ function App() {
           {warning}
         </div>
       )}
-      <MermaidRenderer code={code} theme={theme} />
+      <MermaidRenderer code={code} theme={configTheme || systemTheme} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { useMermaid } from '../hooks/useMermaid';
 
 interface MermaidRendererProps {
   code: string;
-  theme?: 'default' | 'dark';
+  theme?: 'default' | 'dark' | 'forest' | 'neutral';
   onError?: (error: string | null) => void;
 }
 
