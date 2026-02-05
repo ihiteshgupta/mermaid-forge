@@ -1,0 +1,6 @@
+node_modules/
+out/
+static/mermaid-forge/build/
+static/config/build/
+.env
+*.log
