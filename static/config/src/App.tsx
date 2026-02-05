@@ -3,6 +3,7 @@ import { view } from '@forge/bridge';
 import { SourceModeTabs } from './components/SourceModeTabs';
 import { SplitPaneEditor } from './components/SplitPaneEditor';
 import { UrlSourceConfig } from './components/UrlSourceConfig';
+import { useThemeDetect } from './hooks/useThemeDetect';
 
 const DEFAULT_DIAGRAM = `graph TD
     A[Start] --> B{Decision}
@@ -17,6 +18,8 @@ function App() {
   const [externalUrl, setExternalUrl] = useState('');
   const [refreshInterval, setRefreshInterval] = useState('manual');
   const [loading, setLoading] = useState(true);
+  const theme = useThemeDetect();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     view.getContext().then((context) => {
@@ -56,7 +59,7 @@ function App() {
 
       <div style={{ flex: 1, overflow: 'hidden' }}>
         {sourceMode === 'inline' ? (
-          <SplitPaneEditor code={mermaidCode} onChange={setMermaidCode} />
+          <SplitPaneEditor code={mermaidCode} onChange={setMermaidCode} darkMode={isDark} />
         ) : (
           <UrlSourceConfig
             url={externalUrl}

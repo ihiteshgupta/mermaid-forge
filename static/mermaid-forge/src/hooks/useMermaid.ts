@@ -7,17 +7,18 @@ interface UseMermaidOptions {
 
 export function useMermaid(options: UseMermaidOptions = {}) {
   const [error, setError] = useState<string | null>(null);
-  const initialized = useRef(false);
+  const currentTheme = useRef(options.theme || 'default');
 
   useEffect(() => {
-    if (!initialized.current) {
+    const theme = options.theme || 'default';
+    if (theme !== currentTheme.current || !currentTheme.current) {
       mermaid.initialize({
         startOnLoad: false,
         securityLevel: 'strict',
-        theme: options.theme || 'default',
+        theme,
         maxTextSize: 50000,
       });
-      initialized.current = true;
+      currentTheme.current = theme;
     }
   }, [options.theme]);
 
