@@ -1,7 +1,7 @@
 # Marketplace Listing Content
 
 ## App Name
-Mermaid Diagrams for Confluence
+Mermaid Forge for Confluence
 
 ## Tagline
 Render beautiful Mermaid diagrams natively in Confluence pages
