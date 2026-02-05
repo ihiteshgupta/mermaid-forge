@@ -29,11 +29,11 @@ permissions:
   external:
     fetch:
       backend:
-        - '*.githubusercontent.com'
-        - '*.github.com'
-        - '*.gitlab.com'
-        - '*.bitbucket.org'
+        - address: "*.githubusercontent.com"
+        - address: "*.github.com"
+        - address: "*.gitlab.com"
+        - address: "*.bitbucket.org"
 app:
   runtime:
     name: nodejs22.x
-  id: ari:cloud:ecosystem::app/to-be-generated
+  id: ari:cloud:ecosystem::app/1e1a79b6-a444-4319-ac1c-e77847b34934
